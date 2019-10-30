@@ -1,8 +1,13 @@
 const chai = require('chai');
 const expect = chai.expect;
-
-describe('', () => {
-  it('', () => {
-
+const {
+  trial
+} = require('../game/index');
+describe('start', () => {
+  it('returns hello', () => {
+    const actual = trial();
+    const expected = 'hello';
+    expect(actual).to.equal(expected);
   });
 });
+
