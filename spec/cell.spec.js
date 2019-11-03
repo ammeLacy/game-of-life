@@ -143,7 +143,6 @@ describe('Rule 4: When a dead cell has 3 live neighbours it becomes alive', () =
   });
 });
 
-
 describe('Assess', () => {
   it('When a live cell that is prepared to die is told to apply the assessment it dies', () => {
     const cell = new Cell(true);
