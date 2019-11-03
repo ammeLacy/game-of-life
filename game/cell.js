@@ -11,6 +11,9 @@ class Cell {
       if (liveNeighbours < 2) {
         this.changeState = true;
       }
+      else if (liveNeighbours > 3) {
+        this.changeState = true;
+      }
     }
   }
 
