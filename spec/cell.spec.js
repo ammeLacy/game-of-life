@@ -115,7 +115,7 @@ describe('Rule 3: Live cell 2 or 3 neighbours', () => {
     expect(cell.changeState).to.equal(false);
     cell.addNeighbour(new Cell(true));
     cell.addNeighbour(new Cell(true));
-    cell.applyAssessment();
+    cell.assessRules();
     expect(cell.changeState).to.equal(false);
     expect(cell.isAlive).to.equal(true);
   });
@@ -125,9 +125,21 @@ describe('Rule 3: Live cell 2 or 3 neighbours', () => {
     cell.addNeighbour(new Cell(true));
     cell.addNeighbour(new Cell(true));
     cell.addNeighbour(new Cell(true));
-    cell.applyAssessment();
+    cell.assessRules();
     expect(cell.changeState).to.equal(false);
     expect(cell.isAlive).to.equal(true);
+  });
+});
+
+describe('Rule 4: When a dead cell has 3 live neighbours it becomes alive', () => {
+  it('when a cell has 3 live neighbours its state is updated nad it becomes alive', () => {
+    const cell = new Cell(false);
+    cell.addNeighbour(new Cell(true));
+    cell.addNeighbour(new Cell(true));
+    cell.addNeighbour(new Cell(true));
+    cell.assessRules();
+    expect(cell.changeState).to.equal(true);
+    expect(cell.isAlive).to.equal(false);
   });
 });
 

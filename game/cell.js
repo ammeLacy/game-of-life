@@ -15,6 +15,11 @@ class Cell {
         this.changeState = true;
       }
     }
+    else {
+      if (liveNeighbours === 3) {
+        this.changeState = true;
+      }
+    }
   }
 
   applyAssessment() {
