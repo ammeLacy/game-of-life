@@ -85,7 +85,7 @@ describe('Rule 1: Dead cell has less than 2 live neighbours it should prepare to
   });
 });
 
-describe('Rule 2: Live cell', () => {
+describe('Rule 2: Live cell more than 3 neighbours', () => {
   it('When a live cell has more than 3 live neighbours it should prepare to die ', () => {
     const cell = new Cell(true);
     cell.addNeighbour(new Cell(true));
@@ -96,6 +96,41 @@ describe('Rule 2: Live cell', () => {
     expect(cell.changeState).to.equal(true);
   });
 });
+
+describe('Rule 2: Dead cell more than 3 neighbours', () => {
+  it('When a live cell has more than 3 neighbours it should remain dead', () => {
+    const cell = new Cell(false);
+    cell.addNeighbour(new Cell(true));
+    cell.addNeighbour(new Cell(true));
+    cell.addNeighbour(new Cell(true));
+    cell.addNeighbour(new Cell(true));
+    cell.assessRules();
+    expect(cell.changeState).to.equal(false);
+  });
+});
+
+describe('Rule 3: Live cell 2 or 3 neighbours', () => {
+  it('lives when it has 2 neighbours and change state is not updated', () => {
+    const cell = new Cell(true);
+    expect(cell.changeState).to.equal(false);
+    cell.addNeighbour(new Cell(true));
+    cell.addNeighbour(new Cell(true));
+    cell.applyAssessment();
+    expect(cell.changeState).to.equal(false);
+    expect(cell.isAlive).to.equal(true);
+  });
+  it('lives when it has 3 neighbours and change state is not updated', () => {
+    const cell = new Cell(true);
+    expect(cell.changeState).to.equal(false);
+    cell.addNeighbour(new Cell(true));
+    cell.addNeighbour(new Cell(true));
+    cell.addNeighbour(new Cell(true));
+    cell.applyAssessment();
+    expect(cell.changeState).to.equal(false);
+    expect(cell.isAlive).to.equal(true);
+  });
+});
+
 
 describe('Assess', () => {
   it('When a live cell that is prepared to die is told to apply the assessment it dies', () => {
