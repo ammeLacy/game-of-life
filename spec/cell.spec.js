@@ -1,7 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
-const
-  Cell = require('../game/cell');
+const Cell = require('../game/cell');
 
 describe('Creating a cell', () => {
   it('default value of false for is alive and change state', () => {
