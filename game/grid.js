@@ -89,6 +89,7 @@ class Grid {
     }
     return grid;
   }
+  //start of infinite grid functionality
   doesGridNeedToExpand() {
     const n = this.cells.length - 1;
 

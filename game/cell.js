@@ -5,6 +5,7 @@ class Cell {
     this.neighbours = [];
   }
 
+  //assess whether cell lives or dies
   assessRules() {
     const liveNeighbours = this.neighbours.filter(neighbour => neighbour.isAlive).length;
     if (this.isAlive) {
@@ -21,7 +22,7 @@ class Cell {
       }
     }
   }
-
+  //if a rule triggered the change state variable this changes the value of isAlive
   applyAssessment() {
     if (this.changeState) {
       this.isAlive = !this.isAlive;
