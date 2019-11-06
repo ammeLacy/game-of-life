@@ -121,3 +121,22 @@ describe('processTurn', () => {
       ]);
   });
 });
+
+describe('does Grid need to expand', () => {
+  it('returns false when ther are no live cells on the edges of a grid', () => {
+    const grid = new Grid([
+      [0, 0],
+      [0, 0]
+    ])
+    const result = grid.doesGridNeedToExpand();
+    expect(result).to.equal(false);
+  });
+  it('returns true when there is at least one live cell on the edge of a grid', () => {
+    const grid = new Grid([
+      [0, 1],
+      [0, 0]
+    ])
+    const result = grid.doesGridNeedToExpand();
+    expect(result).to.equal(true);
+  });
+});

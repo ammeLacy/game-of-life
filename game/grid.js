@@ -38,7 +38,7 @@ class Grid {
         if (i - 1 >= 0) {
           cell.addNeighbour(this.cells[i - 1][j]);
         }
-        //if i -1 is negative or J + 1 is bigger than the grid's width neighbour is outside the grid
+        //if i -1 is negative or j + 1 is bigger than the grid's width neighbour is outside the grid
         if (i - 1 >= 0 && j + 1 < this.cells[i].length) {
           cell.addNeighbour(this.cells[i - 1][j + 1]);
         }
@@ -89,6 +89,21 @@ class Grid {
     }
     return grid;
   }
+  doesGridNeedToExpand() {
+    const n = this.cells.length - 1;
+
+    for (let i = 0; i < this.cells.length; i++) {
+      if (this.cells[0][i].isAlive
+        || this.cells[i][0].isAlive
+        || this.cells[n][i].isAlive
+        || this.cells[i][n].isAlive) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
+
+
 
 module.exports = Grid;
